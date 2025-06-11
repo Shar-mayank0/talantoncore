@@ -30,4 +30,4 @@ async function dbConnect() : Promise<void>{
 
 }
 
-export default dbConnect;import { disconnect, env, exit } from "process";
+export default dbConnect;

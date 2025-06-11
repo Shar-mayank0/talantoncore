@@ -2,11 +2,12 @@
 
 import React from 'react';
 import { useRouter } from 'next/navigation';
-import { NextRequest, NextResponse } from 'next/server';
+import Image from 'next/image';
+// import { NextRequest, NextResponse } from 'next/server';
 
 
 
-function loginForm() {
+function LoginForm() {
     const router = useRouter();
     const [loginData, setLoginData] = React.useState({
         email: '',
@@ -40,10 +41,12 @@ function loginForm() {
     return (
         <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8 bg-gray-900">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-        <img
-            alt="Your Company"
-            src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=600"
-            className="mx-auto h-10 w-auto"
+        <Image
+        alt="Your Company"
+        src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=600"
+        width={40}
+        height={40}
+        className="mx-auto h-10 w-auto"
         />
         <h2 className="mt-10 text-center text-2xl/9 font-bold tracking-tight text-white">
             Sign in to your account
@@ -119,4 +122,4 @@ function loginForm() {
     )
 }
 
-export default loginForm;
+export default LoginForm;
