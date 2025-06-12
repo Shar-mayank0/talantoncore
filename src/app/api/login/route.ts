@@ -4,9 +4,9 @@ import User from '../../model/user';
 
 export async function POST(req: NextRequest) {
     await dbConnect();
-    const { email, password } = await req.json();
-    const user = await User.findOne({ email });
-    if (user && user.password === password) {
+    const { Email, Password } = await req.json();
+    const user = await User.findOne({ Email });
+    if (user && user.Password === Password) {
         return NextResponse.json({ success: true, isVerified: true}, { status: 200 });
     }
     return NextResponse.json({ success: false, message: 'Invalid credentials' }, { status: 401 });

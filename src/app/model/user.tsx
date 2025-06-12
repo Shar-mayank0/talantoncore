@@ -3,15 +3,17 @@ import { Schema, Document } from "mongoose";
 
 
 export interface IUser extends Document {
-    name: string;
-    email: string;
-    password: string;  
+    Name: string;
+    Email: string;
+    Password: string;  
+    PhotoUrl?: [string]; // Optional field for user photo URL
 }
 
 const userSchema = new Schema<IUser>({
-    name: { type: String, required: true },
-    email: { type: String, required: true, unique: true },
-    password: { type: String, required: true },
+    Name: { type: String, required: false },
+    Email: { type: String, required: true, unique: true },
+    Password: { type: String, required: true },
+    PhotoUrl: { type: [String], required: false }
 });
 
 const User = mongoose.models.User as mongoose.Model<IUser> || mongoose.model<IUser>("User", userSchema);

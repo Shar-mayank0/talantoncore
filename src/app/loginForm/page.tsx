@@ -10,8 +10,8 @@ import Image from 'next/image';
 function LoginForm() {
     const router = useRouter();
     const [loginData, setLoginData] = React.useState({
-        email: '',
-        password: '',
+        Email: '',
+        Password   : '',
     });
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
@@ -30,11 +30,12 @@ function LoginForm() {
         if (res.ok) {
             const data = await res.json();
             if (data.isVerified) {
-                router.push('/dashboard');
+                router.push('/?loggedIn=true'); // Redirect to home page with a query parameter flag
             }
         } else {
             // Show error
             alert('Invalid email or password');
+            router.push('/loginForm'); // Redirect to login page
         }
     };
 
@@ -56,21 +57,18 @@ function LoginForm() {
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
         <form onSubmit={handleSubmit} className="space-y-6">
             <div>
-            <label htmlFor="email" className="block text-sm/6 font-medium text-gray-200">
-            Email address
-            </label>
             <div className="mt-2">
-            <input
-            id="email"
-            name="email"
-            type="email"
-            placeholder='name@example.com'
-            value={loginData.email}
+            <div className="mb-5">
+        <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your email</label>
+        <input
             onChange={handleChange}
-            required
-            autoComplete="email"
-            className="block w-full rounded-md bg-gray-800 px-3 py-1.5 text-base text-white outline outline-1 -outline-offset-1 outline-gray-600 placeholder:text-gray-400 focus:outline focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6"
-            />
+            name="Email" 
+            type="email"
+            id="email" 
+            className="shadow-xs bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-xs-light" 
+            placeholder="name@flowbite.com" 
+            required />
+            </div>
             </div>
             </div>
 
@@ -88,9 +86,9 @@ function LoginForm() {
             <div className="mt-2">
                 <input
                 id="password"
-                name="password"
+                name="Password"
                 type="password"
-                value={loginData.password}
+                value={loginData.Password}
                 onChange={handleChange}
                 minLength={8}
                 required
@@ -102,7 +100,7 @@ function LoginForm() {
 
             <div>
             <button
-                disabled={!loginData.email || !loginData.password}
+                disabled={!loginData.Email || !loginData.Password}
                 type="submit"
                 className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
             >
