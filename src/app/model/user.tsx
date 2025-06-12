@@ -6,7 +6,7 @@ export interface IUser extends Document {
     Name: string;
     Email: string;
     Password: string;  
-    PhotoUrl?: [string]; // Optional field for user photo URL
+    PhotoUrl?: string[]; // Optional field for user photo URL
 }
 
 const userSchema = new Schema<IUser>({
