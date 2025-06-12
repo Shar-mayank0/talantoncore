@@ -11,13 +11,24 @@ export const viewport: Viewport = {
 }
 
 export const metadata: Metadata = {
-  title: "General Physician - Book Appointment Online with General Physician & Internal Medicine Doctors near you | Apollo Clone",
-  description:
-    "General Physician & Internal Medicine - Consult experienced general physicians and internal medicine doctors online at our Apollo clone for diagnosis and treatment of common illnesses, chronic conditions, and preventive care. Book an appointment today.",
-  robots: "index,follow",
-  alternates: {
-    canonical: "http://localhost:3000/",
-  }
+  title: "Internship Assignment",
+  description: "assignment for TalantonCore  |  Software Development internship",
+  keywords: ["internship", "assignment", "software development", "TalantonCore"],
+  authors: [{ name: "Your Name" }],
+  creator: "Your Name",
+  publisher: "TalantonCore",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+
 };
 
 
